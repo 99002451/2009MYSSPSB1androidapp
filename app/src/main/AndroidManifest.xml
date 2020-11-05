@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2009MYSSPSB1androidapp">
-        <activity android:name=".ConfirmFinalOrderActivity"></activity>
+        <activity android:name=".Prevalent.prevalent"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
