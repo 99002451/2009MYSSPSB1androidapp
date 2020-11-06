@@ -112,7 +112,7 @@ public class settingacticity extends AppCompatActivity {
     {
         DatabaseReference UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUsers.getPhone());
 
-        UserRef.addValueEventListener(new ValueEventListener() {
+        UserRef.addValueEventListener(new ValueEventListener()
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
