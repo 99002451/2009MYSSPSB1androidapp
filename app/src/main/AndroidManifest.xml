@@ -13,6 +13,11 @@
         <activity android:name=".AdminNewOrdersActivity" />
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".Prevalent.prevalent"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".ConfirmFinalOrderActivity" />
+        <activity android:name=".CartActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
