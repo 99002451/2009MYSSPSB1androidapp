@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.2009MYSSPSB1androidapp">
+        <activity android:name=".loginactivityapp"></activity>
+        <activity android:name=".Registeractivityapp" />
+        <activity android:name=".settingacticity" />
+        <activity android:name=".Searchproductactivity" />
         <activity android:name=".AdminUserProductActivity"></activity>
         <activity android:name=".AdminNewOrdersActivity" />
         <activity android:name=".AdminCategoryActivity" />
