@@ -22,29 +22,53 @@ import com.squareup.picasso.Picasso;
 
 public class SearchProductsActivity extends AppCompatActivity
 {
-    private Button SearchBtn;
-    private EditText inputText;
-    private RecyclerView searchlist;
-    private String searchInput;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_products);
+@Override
+protected void onStart()
+        {
+        super.onStart();
 
-        inputText = findViewById(R.id.search_product_name);
-        SearchBtn = findViewById(R.id.search_btn);
-        searchlist = findViewById(R.id.search_list);
-        searchlist.setLayoutManager(new LinearLayoutManager(SearchProductsActivity.this));
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        SearchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                searchInput = inputText.getText().toString();
 
-                onStart();
-            }
+        FirebaseRecyclerOptions<Products> options =
+        new FirebaseRecyclerOptions.Builder<Products>()
+        .setQuery(reference.orderByChild("pname").startAt(searchInput), Products.class)
+        .build();
+
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
+        new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+@Override
+protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
+        {
+        holder.txtProductName.setText(model.getPname());
+        // holder.txtProductDescription.setText(model.getDescription());
+        holder.txtProductPrice.setText("₹ " + model.getPrice());
+        Picasso.get().load(model.getImage()).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view)
+        {
+        Intent intent = new Intent(SearchProductsActivity.this, ProductDetailsActivity.class);
+        intent.putExtra("pid", model.getPid());
+        startActivity(intent);
+        }
         });
-    }
+        }
+
+@NonNull
+@Override
+public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i)
+        {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_items_layout, parent, false);
+        ProductViewHolder holder = new ProductViewHolder(view);
+        return holder;
+        }
+        };
+
+        searchlist.setAdapter(adapter);
+        adapter.startListening();
+        }
+        }
+
