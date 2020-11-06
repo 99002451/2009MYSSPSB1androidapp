@@ -1,62 +1,68 @@
 package com.example.a2009mysspsb1androidapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashMap;
+
 public class settingacticity extends AppCompatActivity {
+profileChangeTextBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view)
+        {
+            checker = "clicked";
 
-    private CircleImageView profileImageView;
-    private EditText fullNameEditText, userPhoneEditText, addressEditText, passwordEditText;
-    private TextView profileChangeTextBtn, closeTextBtn, saveTextButton;
+            CropImage.activity(imageUri)
+                    .setAspectRatio(1,1)
+                    .start(SettingsActivity.this);
+        }
+    });
 
-    private Uri imageUri;
-    private String myUrl = "";
-    private StorageTask uploadTask;
-    private StorageReference storageProfilePictureRef;
-    private String checker = "";
+}
+
+    private void updateOnlyUserInfo()
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        HashMap<String, Object> userMap = new HashMap<>();
+        userMap.put("name", fullNameEditText.getText().toString());
+        userMap.put("address", addressEditText.getText().toString());
+        userMap.put("phoneOrder", userPhoneEditText.getText().toString());
+        userMap.put("password", passwordEditText.getText().toString());
+        ref.child(Prevalent.currentOnlineUsers.getPhone()).updateChildren(userMap);
+
+        startActivity(new Intent(SettingsActivity.this, HomeActivity.class));
+        Toast.makeText(SettingsActivity.this, "Profile Updated successfully.", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        storageProfilePictureRef = FirebaseStorage.getInstance().getReference().child("Profile Pictures");
+        if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK && data!= null)
+        {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            imageUri = result.getUri();
 
-        profileImageView = findViewById(R.id.settings_profile_image);
-        fullNameEditText = findViewById(R.id.settings_full_name);
-        userPhoneEditText = findViewById(R.id.settings_phone_number);
-        passwordEditText = findViewById(R.id.settings_password);
-        addressEditText = findViewById(R.id.settings_address);
-        profileChangeTextBtn = findViewById(R.id.profile_image_change_btn);
-        closeTextBtn = findViewById(R.id.close_settings_btn);
-        saveTextButton = findViewById(R.id.update_account_settings_btn);
+            profileImageView.setImageURI(imageUri);
+        }
+        else
+        {
+            Toast.makeText(this, "Error: Try Again", Toast.LENGTH_SHORT).show();
 
-        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText ,passwordEditText);
+            startActivity(new Intent(SettingsActivity.this, SettingsActivity.class));
+            finish();
+        }
+    }
 
-        closeTextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
 
-        saveTextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                if (checker.equals("clicked"))
-                {
-                    userInfoSaved();
-                }
-                else
-                {
-                    updateOnlyUserInfo();
-                }
-            }
-        });
