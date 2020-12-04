@@ -15,10 +15,11 @@ Contributors:
 The project is implemented using Androis studio. The User can buy items from her website. It also has add to cart system . And it can also open in tablet as well as in phone . 
 
 Features:-
+
 1.View product details
 
 
-2.Product Addinf features
+2.Product Adding features
 
 
 3.Compatible with Tablet and phones
