@@ -16,9 +16,17 @@ The project is implemented using Androis studio. The User can buy items from her
 
 Features:-
 1.View product details
+
+
 2.Product Addinf features
+
+
 3.Compatible with Tablet and phones
+
+
 4.User can update profile
+
+
 5.Hindi and english languages
 
 ## Technology/ Stack used :
