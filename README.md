@@ -15,7 +15,7 @@ Contributors:
 
 
 ## Ecommerce website
-The project is implemented using Androis studio. The User can buy items from her website. It also has add to cart system . And it can also open in tablet as well as in phone . 
+The project is implemented using Androis studio. The User can buy items from our website. It also has add to cart features so that user can add items . And it can also access on tablet as well as on phone . 
 
 Features:-
 
