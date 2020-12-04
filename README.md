@@ -37,7 +37,7 @@ Features:-
 
 ## Screenshots :camera:
 
-<p><img src="Project Screenshot\pasted image 0" width="400" height="350" hspace=40>
+<p><img src="project screenshots\pasted image 0" width="400" height="350" hspace=40>
 
 </p>
 
