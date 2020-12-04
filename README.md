@@ -15,10 +15,11 @@ Contributors:
 The project is implemented using Androis studio. The User can buy items from her website. It also has add to cart system . And it can also open in tablet as well as in phone . 
 
 Features:-
-1.LHome
-2.Product
-3.Add to card
-4.Update its profile
+1.View product details
+2.Product Addinf features
+3.Compatible with Tablet and phones
+4.User can update profile
+5.Hindi and english languages
 
 ## Technology/ Stack used :
 -Java
@@ -34,8 +35,4 @@ Features:-
 
 
 
-## Features:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.Login Page<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Book Catalouge<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.Edit Book page<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.Add New Book page<br />
+
