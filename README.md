@@ -42,6 +42,7 @@ Features:-
 <p><img src="/projectscreenshots/image6.png" width="200" height="250" hspace=40>
   <img src="/projectscreenshots/image3.png" width="200" height="250" hspace=40>
   <img src="/projectscreenshots/image4.png" width="200" height="250" hspace=40>
+  <img src="/projectscreenshots/image7.png" width="200" height="250" hspace=40>
 </p>
 
 
