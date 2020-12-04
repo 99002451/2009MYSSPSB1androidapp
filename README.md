@@ -36,6 +36,10 @@ Features:-
 - CSS
 
 ## Screenshots :camera:
+<p><img src="/projectscreenshots/image2.png" width="400" height="350" hspace=40>
+  <img src="/projectscreenshots/image3.png" width="400" height="350" hspace=40>
+  <img src="/projectscreenshots/image4.png" width="400" height="350" hspace=40>
+</p>
 
 
 
